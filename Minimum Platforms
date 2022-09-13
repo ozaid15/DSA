@@ -1,0 +1,22 @@
+int findPlatform(int arr[], int dep[], int n)
+{
+  // Your code here
+  sort(arr,arr+n);
+  sort(dep,dep+n);
+  int ans=0;
+  int platform_required=0;//number of platform required at that time
+  int i=0,j=0;
+  while(i < n) {
+      // if next event is arival in sorted order then increase the number of platfoem required
+      if(arr[i] <= dep[j]) {
+          platform_required++;
+          i++;
+      } else { // else decrease the required platform
+          platform_required--;
+          j++;
+      }
+      // update the answer
+      ans = max(ans,platform_required);
+  }
+  return ans;
+}
